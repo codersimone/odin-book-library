@@ -17,3 +17,14 @@ function addBookToLibrary(title, author, pages, isRead) {
     const newBook = new Book(title, author, pages, isRead);
     myLibrary.push(newBook);
 }
+
+const mainContainer = document.querySelector('.main-container');
+
+const libraryHeader = document.createElement('h1');
+libraryHeader.classList.add('library-header');
+libraryHeader.textContent = 'My library';
+mainContainer.appendChild(libraryHeader);
+
+const libraryContainer = document.createElement('div');
+libraryContainer.classList.add('library-container');
+mainContainer.appendChild(libraryContainer);
