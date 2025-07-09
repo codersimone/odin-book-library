@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, isRead) {
     this.id = crypto.randomUUID();
@@ -14,6 +14,11 @@ function addBookToLibrary(title, author, pages, isRead) {
     displayBooks();
 }
 
+function deleteBook(id) {
+    myLibrary = myLibrary.filter((book) => book.id !== id);
+    displayBooks();
+}
+
 function displayBooks() {
     const container = document.querySelector('.library-container');
 
@@ -22,6 +27,7 @@ function displayBooks() {
     myLibrary.forEach((book) => {
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
+        bookCard.dataset.id = book.id;
 
         const title = document.createElement('h3');
         title.classList.add('title');
@@ -44,11 +50,19 @@ function displayBooks() {
             book.isRead ? 'Already read' : 'Not read yet'
         }</span>`;
 
+        const deleteBookBtn = document.createElement('button');
+        deleteBookBtn.classList.add('delete-book-btn');
+        deleteBookBtn.textContent = 'Delete book';
+        deleteBookBtn.addEventListener('click', () => {
+            deleteBook(book.id);
+        });
+
         bookCard.appendChild(title);
         bookCard.appendChild(сardBody);
         bookCard.appendChild(author);
         bookCard.appendChild(pages);
         bookCard.appendChild(status);
+        bookCard.appendChild(deleteBookBtn);
 
         container.appendChild(bookCard);
     });
