@@ -72,9 +72,9 @@ body {
   margin-bottom: 16px;
   font-size: 16px;
   font-weight: 600;
+  text-transform: uppercase;
   background: rgb(255, 204, 188);
   color: rgb(0, 136, 122);
-  text-transform: uppercase;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -94,11 +94,11 @@ body {
 .new-book-dialog {
   min-width: 200px;
   padding: 14px;
+  background: rgb(0, 136, 122);
+  color: rgb(255, 204, 188);
   border-radius: 12px;
   border: none;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-  background: rgb(0, 136, 122);
-  color: rgb(255, 204, 188);
 }
 
 .new-book-dialog::backdrop {
@@ -112,8 +112,8 @@ body {
 
 .new-book-form label {
   display: block;
-  font-size: 18px;
   margin-bottom: 6px;
+  font-size: 18px;
 }
 
 .new-book-form input {
