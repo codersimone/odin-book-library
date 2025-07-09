@@ -11,6 +11,7 @@ function Book(title, author, pages, isRead) {
 function addBookToLibrary(title, author, pages, isRead) {
     const newBook = new Book(title, author, pages, isRead);
     myLibrary.push(newBook);
+    displayBooks();
 }
 
 function displayBooks() {
@@ -62,4 +63,30 @@ addBookToLibrary(
 );
 addBookToLibrary(`Dandelion Wine`, `R. Bradbury`, 281, false);
 
-displayBooks();
+const newBookBtn = document.querySelector('.new-book-btn');
+const newBookDialog = document.querySelector('.new-book-dialog');
+const newBookForm = document.querySelector('.new-book-form');
+const cancelBtn = document.querySelector('.cancel-btn');
+
+newBookBtn.addEventListener('click', () => {
+    newBookDialog.showModal();
+});
+
+cancelBtn.addEventListener('click', () => {
+    newBookDialog.close();
+});
+
+newBookForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(newBookForm);
+    const title = formData.get('title');
+    const author = formData.get('author');
+    const pages = formData.get('pages');
+    const isRead = formData.get('isRead') === 'on';
+
+    addBookToLibrary(title, author, pages, isRead);
+
+    newBookForm.reset();
+    newBookDialog.close();
+});
