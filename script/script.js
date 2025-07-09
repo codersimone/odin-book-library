@@ -1,5 +1,4 @@
 let myLibrary = [];
-
 function Book(title, author, pages, isRead) {
     this.id = crypto.randomUUID();
     this.title = title;
@@ -7,6 +6,10 @@ function Book(title, author, pages, isRead) {
     this.pages = pages;
     this.isRead = isRead;
 }
+
+Book.prototype.toggleReadStatus = function () {
+    this.isRead = !this.isRead;
+};
 
 function addBookToLibrary(title, author, pages, isRead) {
     const newBook = new Book(title, author, pages, isRead);
@@ -50,6 +53,14 @@ function displayBooks() {
             book.isRead ? 'Already read' : 'Not read yet'
         }</span>`;
 
+        const toggleReadStatusBtn = document.createElement('button');
+        toggleReadStatusBtn.classList.add('toggle-read-status-btn');
+        toggleReadStatusBtn.textContent = 'Change status';
+        toggleReadStatusBtn.addEventListener('click', () => {
+            book.toggleReadStatus();
+            displayBooks();
+        });
+
         const deleteBookBtn = document.createElement('button');
         deleteBookBtn.classList.add('delete-book-btn');
         deleteBookBtn.textContent = 'Delete book';
@@ -59,10 +70,12 @@ function displayBooks() {
 
         bookCard.appendChild(title);
         bookCard.appendChild(сardBody);
-        bookCard.appendChild(author);
-        bookCard.appendChild(pages);
-        bookCard.appendChild(status);
-        bookCard.appendChild(deleteBookBtn);
+
+        сardBody.appendChild(author);
+        сardBody.appendChild(pages);
+        сardBody.appendChild(status);
+        сardBody.appendChild(toggleReadStatusBtn);
+        сardBody.appendChild(deleteBookBtn);
 
         container.appendChild(bookCard);
     });
