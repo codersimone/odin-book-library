@@ -27,7 +27,7 @@ body {
 .book-card {
   display: grid;
   grid-template-rows: 80px 1fr;
-  height: 200px;
+  height: 300px;
   padding: 16px;
   background: rgb(119, 166, 247);
   border-radius: 8px;
@@ -39,9 +39,12 @@ body {
 }
 
 .title {
-  margin-bottom: 25px;
   font-size: 24px;
   color: rgb(255, 204, 188);
+}
+
+.card-body {
+  margin-top: 38px;
 }
 
 .status span {
@@ -59,8 +62,10 @@ body {
   color: rgb(211, 227, 252);
 }
 
-/* Button 'Add new book' */
+/* Buttons */
 .new-book-btn,
+.toggle-read-status-btn,
+.delete-book-btn,
 .new-book-actions button {
   width: 160px;
   padding: 8px 12px;
@@ -73,6 +78,16 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.toggle-read-status-btn,
+.delete-book-btn,
+.new-book-actions button {
+  margin-right: 20px;
+}
+
+.toggle-read-status-btn {
+  margin-top: 20px;
 }
 
 /* Dialog and Form */
@@ -115,8 +130,4 @@ input[type="number"] {
 input[type='checkbox'] {
   margin: 12px 0px 30px 0px;
   cursor: pointer;
-}
-
-.new-book-actions button {
-  margin-right: 20px;
 }
