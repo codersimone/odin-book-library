@@ -1,4 +1,5 @@
 let myLibrary = [];
+
 class Book {
     constructor(title, author, pages, isRead) {
         this.id = crypto.randomUUID();
